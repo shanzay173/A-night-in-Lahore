@@ -1,0 +1,36 @@
+.section-heading {
+  max-width: 780px;
+  margin-bottom: 4rem;
+}
+
+.section-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  margin-bottom: 1.4rem;
+}
+
+.section-heading__eyebrow::before {
+  content: '';
+  width: 34px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.section-heading__title {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.02;
+  margin-bottom: 1.2rem;
+}
+
+.section-heading__sub {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--cream-muted);
+  font-style: italic;
+  max-width: 52ch;
+}

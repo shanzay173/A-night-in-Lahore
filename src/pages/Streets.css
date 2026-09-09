@@ -1,0 +1,91 @@
+/* ============================================================
+   STREETS — Chapter One
+   ============================================================ */
+
+/* ---- Lantern walk (gallery block) ---- */
+.st-walk {
+  position: relative;
+  padding: clamp(5rem, 10vw, 8rem) 0 clamp(6rem, 12vw, 10rem);
+  background:
+    radial-gradient(circle at 82% 10%, rgba(211, 164, 91, 0.05), transparent 42%),
+    linear-gradient(180deg, var(--night) 0%, var(--ink) 100%);
+}
+
+.st-walk__head {
+  max-width: 640px;
+  margin-bottom: clamp(2.6rem, 6vw, 4.5rem);
+}
+
+.st-walk__head .ed-label {
+  margin-bottom: 1.6rem;
+}
+
+.st-walk__title {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  line-height: 1.02;
+}
+
+.st-walk__title em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+/* ---- Closer ---- */
+.st-closer {
+  position: relative;
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 0;
+  overflow: hidden;
+}
+
+.st-closer__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(211, 164, 91, 0.1), transparent 55%),
+    linear-gradient(180deg, var(--night) 0%, var(--ink) 100%);
+}
+
+.st-closer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.st-closer__label {
+  margin-bottom: 1.8rem;
+}
+
+.st-closer__title {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 1.12;
+  margin-bottom: 1.1rem;
+}
+
+.st-closer__title em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+.st-closer__sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--cream-muted);
+  max-width: 46ch;
+  margin: 0 auto 2.4rem;
+}
+
+.st-closer__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

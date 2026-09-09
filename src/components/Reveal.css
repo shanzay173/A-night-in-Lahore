@@ -1,0 +1,8 @@
+.rveal {
+  overflow: hidden;
+}
+
+.rveal__inner {
+  display: inline-block;
+  will-change: transform;
+}

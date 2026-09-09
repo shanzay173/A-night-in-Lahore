@@ -1,0 +1,268 @@
+/* ============================================================
+   HERO — the first screen of the night
+   ============================================================ */
+
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #0c0e13 0%, #0a0b0e 45%, #08090c 100%);
+}
+
+/* ---- Scene layer ---- */
+.hero__scene {
+  position: absolute;
+  inset: -8% 0;
+  will-change: transform, opacity;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-cv-fallback,
+.hero__fallback {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__fallback {
+  background:
+    radial-gradient(circle at 78% 22%, rgba(255, 214, 150, 0.24), transparent 34%),
+    radial-gradient(circle at 30% 88%, rgba(255, 150, 70, 0.14), transparent 42%),
+    linear-gradient(180deg, #0c0e13, #07080b);
+}
+
+/* ---- Ambient glows over the scene ---- */
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero__glow--moon {
+  width: 46vmax;
+  height: 46vmax;
+  top: -8vmax;
+  right: -9vmax;
+  background: radial-gradient(
+    circle,
+    rgba(255, 214, 150, 0.18),
+    rgba(255, 214, 150, 0.04) 40%,
+    transparent 70%
+  );
+}
+
+.hero__glow--warm {
+  width: 58vmax;
+  height: 38vmax;
+  bottom: -12vmax;
+  left: -12vmax;
+  background: radial-gradient(
+    circle,
+    rgba(255, 176, 90, 0.1),
+    transparent 64%
+  );
+}
+
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse at center, transparent 42%, rgba(5, 6, 10, 0.58) 100%),
+    linear-gradient(180deg, rgba(5, 6, 10, 0.3) 0%, transparent 26%, transparent 68%, rgba(6, 7, 10, 0.55) 100%);
+}
+
+/* ---- Editorial edge coordinates ---- */
+.hero__coordinate {
+  position: absolute;
+  z-index: 3;
+  font-size: 0.6rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  writing-mode: vertical-rl;
+  opacity: 0.9;
+}
+
+.hero__coordinate--left {
+  top: 50%;
+  left: var(--gutter);
+}
+
+.hero__coordinate--right {
+  top: 50%;
+  right: var(--gutter);
+  transform: rotate(180deg);
+}
+
+/* ---- Content ---- */
+.hero__content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 0 1.5rem;
+  max-width: 92vw;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+}
+
+.hero__eyebrow::before,
+.hero__eyebrow::after {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim));
+}
+
+.hero__eyebrow::after {
+  background: linear-gradient(270deg, transparent, var(--gold-dim));
+}
+
+.hero__title {
+  font-size: clamp(3.4rem, 13.5vw, 10.5rem);
+  line-height: 0.94;
+  letter-spacing: 0.005em;
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__mask {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.06em;
+}
+
+.hero__line {
+  display: block;
+  will-change: transform;
+}
+
+.hero__line--accent {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-soft);
+}
+
+.hero__sub {
+  margin-top: 1.7rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+  color: var(--cream-muted);
+  letter-spacing: 0.02em;
+}
+
+.hero__cta {
+  margin-top: 2.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  transition: color 0.35s var(--ease-out);
+}
+
+.hero__cta i {
+  width: 1px;
+  height: 26px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  transition: height 0.35s var(--ease-out);
+}
+
+.hero__cta:hover {
+  color: var(--cream);
+}
+
+.hero__cta:hover i {
+  height: 40px;
+}
+
+/* ---- Scroll cue ---- */
+.hero__scroll {
+  position: absolute;
+  bottom: 2.4rem;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--cream-muted);
+  opacity: 0.9;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: heroCue 2.2s ease-in-out 1.8s infinite;
+}
+
+@keyframes heroCue {
+  0% {
+    transform: scaleY(0.3);
+    transform-origin: top;
+    opacity: 0;
+  }
+  45% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.3);
+    transform-origin: bottom;
+    opacity: 0;
+  }
+}
+
+.hero__baseline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(211, 164, 91, 0.35), transparent);
+  z-index: 2;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 100svh;
+  }
+  .hero .hero-canvas,
+  .hero__fallback,
+  .hero__scene {
+    opacity: 1;
+  }
+  .hero__coordinate {
+    display: none;
+  }
+  .hero__cta {
+    margin-top: 2.4rem;
+  }
+}

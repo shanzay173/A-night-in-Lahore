@@ -1,0 +1,135 @@
+/* ============================================================
+   THE END — final scene, night sliding into dawn
+   ============================================================ */
+
+.en {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--ink);
+}
+
+/* ---- Layers ---- */
+.en__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  will-change: autoAlpha;
+}
+
+.en__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Night → dawn grading: amber rises along the horizon, keeping words legible */
+.en__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 86%, rgba(255, 166, 92, 0.14), transparent 40%),
+    radial-gradient(circle at 50% 40%, rgba(5, 6, 10, 0.05) 0%, rgba(5, 6, 10, 0.3) 70%, rgba(5, 6, 10, 0.6) 100%),
+    linear-gradient(180deg, rgba(16, 22, 34, 0.3) 0%, transparent 46%, rgba(32, 22, 14, 0.45) 100%);
+}
+
+.en__curtain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--ink);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* ---- Content ---- */
+.en__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+  padding: 6rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.en__label {
+  margin-bottom: 2.2rem;
+}
+
+.en__title {
+  font-size: clamp(2.8rem, 9.5vw, 7rem);
+  line-height: 1;
+  color: var(--cream);
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.7);
+}
+
+.en__title em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+.en__sub {
+  margin-top: 0.7rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.05;
+  color: var(--gold-soft);
+  text-shadow: 0 4px 36px rgba(0, 0, 0, 0.65);
+}
+
+.en__body {
+  margin-top: 2.4rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1.7;
+  color: var(--cream-muted);
+  max-width: 44ch;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+}
+
+.en__body em {
+  color: var(--gold-soft);
+  font-weight: 400;
+}
+
+.en__cta {
+  margin-top: 3.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 560px) {
+  .en {
+    min-height: 720px;
+  }
+  .en__cta {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+  }
+  .en__cta .btn {
+    width: 100%;
+  }
+  .en__body {
+    max-width: 34ch;
+  }
+}

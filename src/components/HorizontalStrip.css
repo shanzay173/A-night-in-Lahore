@@ -1,0 +1,168 @@
+/* ============================================================
+   HORIZONTAL STRIP — vertical scroll, horizontal journey
+   ============================================================ */
+
+.hstrip {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 80%, rgba(109, 36, 51, 0.18), transparent 42%),
+    radial-gradient(circle at 85% 20%, rgba(207, 106, 53, 0.08), transparent 42%),
+    var(--night);
+}
+
+.hstrip--pin {
+  height: 100svh;
+}
+
+.hstrip__pinner {
+  height: 100%;
+}
+
+.hstrip__inner {
+  position: relative;
+  height: 100%;
+}
+
+.hstrip__head {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(1.4rem, 4vw, 2.2rem) var(--gutter);
+  pointer-events: none;
+}
+
+.hstrip__label {
+  font-size: 0.64rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hstrip__hint {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--cream-muted);
+}
+
+.hstrip__scroller {
+  position: absolute;
+  inset: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hstrip__scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.hstrip__track {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: max-content;
+  padding: 0 var(--gutter);
+  will-change: transform;
+}
+
+.hstrip__slide {
+  position: relative;
+  margin: 0;
+  height: min(76vh, 620px);
+  width: clamp(260px, 26vw, 420px);
+  margin-right: clamp(1.25rem, 3vw, 3rem);
+  flex-shrink: 0;
+  overflow: hidden;
+  scroll-snap-align: center;
+}
+
+.hstrip__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hstrip__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(6, 7, 10, 0.72) 0%,
+    transparent 46%
+  );
+  pointer-events: none;
+}
+
+.hstrip__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.4s var(--ease-out);
+}
+
+.hstrip__slide:hover .hstrip__media img {
+  transform: scale(1.06);
+}
+
+.hstrip__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 1.3rem 1.3rem 1.6rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hstrip__num {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+}
+
+.hstrip__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  line-height: 1.05;
+  color: var(--cream);
+}
+
+.hstrip__line {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--cream-muted);
+  max-width: 30ch;
+}
+
+/* ---- Touch: let the strip scroll natively inside its own height ---- */
+@media (max-width: 899px) {
+  .hstrip {
+    height: 82svh;
+  }
+  .hstrip__slide {
+    height: 68vh;
+    width: 74vw;
+  }
+  .hstrip__hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hstrip__media img {
+    transition: none;
+  }
+}

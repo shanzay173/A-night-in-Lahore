@@ -1,0 +1,114 @@
+/* ============================================================
+   CHAPTER SCENE — full-viewport editorial chapter scene
+   ============================================================ */
+
+.cs {
+  position: relative;
+  height: max(94svh, 580px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.cs__frame {
+  position: absolute;
+  inset: 0;
+  will-change: clip-path;
+  overflow: hidden;
+}
+
+.cs__img {
+  position: absolute;
+  inset: -12% 0;
+  width: 100%;
+  height: 124%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.cs__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 6, 10, 0.85) 0%, rgba(5, 6, 10, 0.28) 46%, transparent 76%),
+    linear-gradient(180deg, rgba(5, 6, 10, 0.32) 0%, transparent 42%, rgba(5, 6, 10, 0.58) 100%);
+}
+
+.cs--right .cs__shade {
+  background:
+    linear-gradient(270deg, rgba(5, 6, 10, 0.85) 0%, rgba(5, 6, 10, 0.28) 46%, transparent 76%),
+    linear-gradient(180deg, rgba(5, 6, 10, 0.32) 0%, transparent 42%, rgba(5, 6, 10, 0.58) 100%);
+}
+
+.cs__text {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  padding: 2.5rem 2rem;
+  margin: 0 6vw;
+}
+
+.cs--right .cs__text {
+  margin-left: auto;
+  text-align: right;
+}
+
+.cs__eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+
+.cs__title {
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  line-height: 0.98;
+  color: var(--cream);
+  text-shadow: 0 2px 26px rgba(0, 0, 0, 0.7);
+}
+
+.cs__title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-soft);
+}
+
+.cs__meta {
+  margin-top: 1.1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.cs__body {
+  margin-top: 1.3rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.2vw, 1.4rem);
+  line-height: 1.72;
+  color: var(--cream-muted);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .cs {
+    height: max(88svh, 560px);
+  }
+  .cs__text {
+    margin: 0 1.25rem;
+    padding: 2rem 0;
+    max-width: 440px;
+  }
+  .cs--right .cs__text {
+    margin-left: 0;
+    text-align: left;
+  }
+  .cs--right .cs__shade {
+    background:
+      linear-gradient(90deg, rgba(5, 6, 10, 0.85) 0%, rgba(5, 6, 10, 0.28) 46%, transparent 76%),
+      linear-gradient(180deg, rgba(5, 6, 10, 0.32) 0%, transparent 42%, rgba(5, 6, 10, 0.58) 100%);
+  }
+}

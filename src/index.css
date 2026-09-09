@@ -1,0 +1,337 @@
+/* ============================================================
+   A NIGHT IN LAHORE — Design System
+   A cinematic night. Deep charcoal, warm ivory, muted gold,
+   deep maroon, and the faintest ember of orange.
+   ============================================================ */
+
+:root {
+  /* Core palette — night */
+  --ink: #06070a;
+  --night: #0a0b0f;
+  --night-2: #101218;
+  --night-3: #161a22;
+  --coal: #1d222b;
+
+  /* Light — warm ivory & cream */
+  --cream: #f2ead9;
+  --cream-soft: #efe6d2;
+  --cream-muted: #b6a98e;
+
+  /* Warmth — gold */
+  --gold: #d3a45b;
+  --gold-soft: #e2c38f;
+  --gold-dim: #8f6f3d;
+
+  /* Blood & ember */
+  --maroon: #6d2433;
+  --maroon-soft: #8a3346;
+  --maroon-deep: #2b1119;
+  --ember: #c26a35;
+  --ember-soft: #e08a4e;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-cin: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-soft: cubic-bezier(0.45, 0, 0.35, 1);
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --max: 1400px;
+  --max-wide: 1680px;
+
+  color-scheme: dark;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  background: var(--ink);
+}
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1.04;
+  letter-spacing: 0.005em;
+}
+
+p {
+  color: var(--cream-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+::selection {
+  background: var(--maroon);
+  color: var(--cream);
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--maroon), var(--coal));
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--maroon-soft);
+}
+
+/* ---- Focus ----- */
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   Layout helpers
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.container--wide {
+  max-width: var(--max-wide);
+}
+
+/* ============================================================
+   Editorial label — "01 / THE STREETS"
+   ============================================================ */
+
+.ed-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.ed-label::before {
+  content: '';
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+}
+
+.ed-label--center {
+  justify-content: center;
+}
+
+.ed-label--center::after {
+  content: '';
+  width: 42px;
+  height: 1px;
+  background: linear-gradient(270deg, var(--gold-dim), transparent);
+}
+
+/* Warm chapter accent */
+.ed-label--ember {
+  color: var(--ember-soft);
+}
+
+.ed-label--ember::before {
+  background: linear-gradient(90deg, var(--ember), transparent);
+}
+
+.ed-label--ember.ed-label--center::after {
+  background: linear-gradient(270deg, var(--ember), transparent);
+}
+
+/* Moonlight chapter accent */
+.ed-label--moon {
+  color: var(--cream-soft);
+}
+
+.ed-label--moon::before {
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+}
+
+/* ============================================================
+   Film grain overlay
+   ============================================================ */
+
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+  animation: grainShift 9s steps(10) infinite;
+  will-change: transform;
+}
+
+@keyframes grainShift {
+  0%   { transform: translate(0, 0); }
+  10%  { transform: translate(-4%, -3%); }
+  20%  { transform: translate(-8%, 2%); }
+  30%  { transform: translate(2%, -6%); }
+  40%  { transform: translate(6%, -2%); }
+  50%  { transform: translate(-3%, 5%); }
+  60%  { transform: translate(5%, -5%); }
+  70%  { transform: translate(-6%, 1%); }
+  80%  { transform: translate(4%, 6%); }
+  90%  { transform: translate(-2%, -4%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ============================================================
+   Scroll progress
+   ============================================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 1500;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--maroon), var(--gold));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+/* ============================================================
+   Custom cursor
+   ============================================================ */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2100;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+  opacity: 0;
+}
+
+.cursor-dot {
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  background: var(--gold-soft);
+}
+
+.cursor-ring {
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid rgba(226, 195, 143, 0.45);
+  transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out),
+    margin 0.3s var(--ease-out), background 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out);
+}
+
+.cursor-ring.is-active {
+  width: 78px;
+  height: 78px;
+  margin: -39px 0 0 -39px;
+  background: rgba(10, 11, 15, 0.55);
+  backdrop-filter: blur(2px);
+  border-color: rgba(226, 195, 143, 0.6);
+}
+
+.cursor-ring .cursor-ring__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.cursor-ring.is-active .cursor-ring__label {
+  opacity: 1;
+}
+
+@media (pointer: coarse), (max-width: 899px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Motion preferences
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .grain {
+    animation: none;
+  }
+}

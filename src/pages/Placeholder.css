@@ -1,0 +1,50 @@
+.ph {
+  position: relative;
+  min-height: 100svh;
+  padding: clamp(8rem, 18vw, 12rem) 1.5rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--night) 0%, var(--ink) 100%);
+}
+
+.ph__moon {
+  position: absolute;
+  top: 8vh;
+  right: -8vmax;
+  width: 34vmax;
+  height: 34vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 224, 172, 0.28),
+    rgba(255, 224, 172, 0.06) 45%,
+    transparent 70%
+  );
+}
+
+.ph__inner {
+  position: relative;
+  max-width: 720px;
+}
+
+.ph__inner .section-heading {
+  margin: 0 auto 2rem;
+}
+
+.ph__note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold-dim);
+  font-size: 1.15rem;
+  margin-bottom: 2.6rem;
+}
+
+.ph__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
